@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
 
+#include <chrono>
 #include <fstream>
 
 using namespace std;
+using namespace std::chrono;
 
 void get_turns(vector<int> &turns, string &row) {
     size_t pos = 0;
@@ -121,7 +123,6 @@ long best_board_last(const vector<int> &turns,
                 if (b.empty()) {
                     winner_boards.insert(i);
                     if (winner_boards.size() == boards.size()) {
-                        cout << t << '\n';
                         long rest = 0;
                         for (unordered_set<int> &b2 : board) {
                             b2.erase(t);  // erase in rest
@@ -142,6 +143,10 @@ int main() {
     pair<vector<int>, vector<vector<unordered_set<int>>>> p = read_data();
     vector<int> turns = p.first;
     vector<vector<unordered_set<int>>> boards = p.second;
-    cout << best_board(turns, boards);
+    auto start = high_resolution_clock::now();
+    cout << best_board_last(turns, boards) << '\n';
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(end - start);
+    cout << duration.count() << '\n';
     return 0;
 }
