@@ -10,6 +10,11 @@
         "string_view": "cpp",
         "iosfwd": "cpp",
         "bitset": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp"
     }
 }
